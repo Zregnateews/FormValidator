@@ -1,0 +1,316 @@
+/* START FORMS */
+
+/* - START Form Checkbox / Radio */
+
+.form .noFont{font-size:0;}
+
+.form label.fakeCheckbox {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height:25px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.form label.fakeCheckbox input {
+    position: absolute;
+    opacity: 0;
+}
+
+.form label.fakeCheckbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border:1px solid #ccc;
+}
+
+.form label.fakeCheckbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.form label.fakeCheckbox input:checked ~ .checkmark {
+    background-color: #ffc13a;
+    border-color:#ffc13a;
+}
+
+
+.form label.fakeCheckbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.form label.fakeCheckbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.form label.fakeCheckbox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/* - END Form Checkbox / Radio */
+
+.form .fieldHolder{margin-bottom:15px;}
+
+.form input[type=text],
+.form input[type=password],
+.form input[type=email],
+.form input[type=file],
+.form select,
+.form textarea
+{
+    width: 100%;
+    box-sizing: border-box;
+    height: 25px;
+    margin-top:15px;
+    margin-bottom: 5px;
+    border:0 none;
+    border-bottom:1px solid #ccc;
+    text-indent: 10px;
+    font-size: 16px;
+    font-family: "Source Sans Pro", Arial, sans-serif;
+}
+
+.form input[type=text]:focus,
+.form input[type=password]:focus,
+.form input[type=email]:focus,
+.form input[type=file]:focus,
+.form select:focus,
+.form textarea:focus{
+    outline:0 none;
+}
+
+.form textarea
+{
+    resize:none;
+    height: 90px;
+}
+
+.form input[type=file]
+{
+    height: 30px;
+    opacity: 0;
+    margin: 0;
+}
+
+.form input[type=file].bigFile
+{
+    height: 90px;
+}
+
+.form div.fakeFile
+{
+    background: #fff;
+    min-height:90px;
+    width:100%;
+    height: 80px;
+    padding:10px;
+    border: 1px solid #ccc;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+.form div.fakeFile:before{
+    content: "Click me to add an image";
+}
+
+.form div.fakeFile.hasFile:before{
+    content: "";
+}
+
+.form div.fakeFile .previewImage{max-width:100%;max-height:100%;}
+
+.form div.fakeFile img[src=""]
+{
+    display:none;
+}
+
+.form div.fakeFile .fakeInput {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.form label
+{
+    display:block;
+    font-size: 13px;
+    margin-bottom:5px;
+}
+
+.form input[type="checkbox"] + label,
+.form input[type="radio"] + label
+{
+    display:inline-block;
+    vertical-align: middle;
+}
+
+.form input[type="checkbox"].error + label,
+.form input[type="radio"].error + label
+{
+    color:red;
+}
+
+.form label.errorLabel,
+.form label.errorLabel + .error
+{
+    margin-bottom: 30px;
+}
+
+.form label.errorLabel > span
+{
+    font-size: 12px;
+    line-height: 14px;
+    position: absolute;
+    top: 25px;
+    width: 45%;
+    left: 15px;
+}
+
+.form .floating-label > input:focus ~ label,
+.form .floating-label.hasValue > input ~ label{
+    top:3px;
+    left:12px;
+    font-size:11px;
+    opacity:1;
+}
+
+.form .floating-label{position:relative;}
+.form .floating-label > label{
+    position: absolute;
+    pointer-events: none;
+    left: 12px;
+    top: 10px;
+    transition: 0.2s ease all;
+    font-size: 14px;
+    color: #999;
+}
+
+.form .floating-label.prefixField > input:focus ~ label,
+.form .floating-label.prefixField.hasValue > input ~ label{
+    left: calc(30% + 12px);
+}
+
+.form .floating-label.prefixField > label{
+    left: calc(30% + 12px);
+}
+
+.form .fieldHolder.hasError input[type=text].error,
+.form input[type=text].error,
+.form .fieldHolder.hasError input[type=password].error,
+.form input[type=password].error,
+.form .fieldHolder.hasError input[type=email].error,
+.form input[type=email].error,
+.form .fieldHolder.hasError .fakeFile,
+.form .fieldHolder.hasError input[type=file].error,
+.form input[type=file].error,
+.form .fieldHolder.hasError input[type=radio].error,
+.form input[type=radio].error,
+.form .fieldHolder.hasError input[type=checkbox].error,
+.form input[type=checkbox].error,
+.form .fieldHolder.hasError input[type=radio].error + div,
+.form input[type=radio].error + div,
+.form .fieldHolder.hasError input[type=checkbox].error + div,
+.form input[type=checkbox].error + div,
+.form .fieldHolder.hasError select.error,
+.form select.error,
+.form .fieldHolder.hasError textarea.error,
+.form textarea.error{
+    border-color:red;
+}
+
+.form .fieldHolder.half{
+    float:left;
+    width:49%;
+    vertical-align:middle;
+}
+
+.form .fieldHolder.half + .fieldHolder.half{margin-left:2%;}
+
+.form input[type=text].half,
+.form input[type=email].half,
+.form input[type=password].half,
+.form select.half{
+    /*float:left;*/
+    width:49%;
+    vertical-align:middle;
+}
+
+.form input[type=text].half ~ .half,
+.form input[type=email].half ~ .half,
+.form input[type=password].half ~ .half,
+.form select.half ~ .half{
+    width:49%;
+    margin-left:2%;
+    vertical-align:middle;
+}
+
+/* - START Error Message */
+
+.form .fieldHolder.hasError{
+    position:relative;
+}
+
+.errorMessage,
+.form .fieldHolder.hasError .errorMessage{
+    padding: 0 0 0 10px;
+    color: red;
+    font-size: 12px;
+    margin-bottom:10px;
+}
+
+.errorMessageHolder
+{
+    position:relative;
+}
+
+.errorMessageHolder > .errorMessage
+{
+    position: absolute;
+    width: auto;
+    background:red;
+    height:auto;
+    padding:3px 10px;
+    font-size:12px;
+    border-radius:4px;
+    color: #fff;
+    box-shadow: 1px 1px 2px #575757;
+}
+
+.errorMessageHolder > .errorMessage:after
+{
+    content: "\f0d7";
+    font-family:"FontAwesome";
+    bottom: -12px;
+    font-size: 20px;
+    position: absolute;
+    color: red;
+    text-shadow: 1px 1px 1px #575757;
+}
+
+.errorMessageHolder > .errorMessage > p
+{
+    margin:0;
+    white-space:nowrap;
+}
+
+/* - END Error Message */
+
+/* END FORMS */
