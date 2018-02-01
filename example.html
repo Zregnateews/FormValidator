@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="formValidator.css" />
+        <style type="text/css">
+            .form{
+                margin-bottom: 40px;
+            }
+            .form button{
+                border:1px solid #ccc;
+                background-color:#fff;
+                color: #666;
+                height:40px;
+                margin-top:20px;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="container">
+            <div id="form1" class="col-sm-12 form">
+                <h2>Form numbah 1</h2>
+                <div class="floating-label fieldHolder noPadding">
+                    <input type="text" id="firstName" data-empty-error-message="Please enter your First Name" class="validName required" />
+                    <label for="firstName">First Name</label>
+                </div>
+                <div class="floating-label fieldHolder noPadding">
+                    <input type="text" id="email" data-empty-error-message="Please enter your First Name" class="validEmail required" />
+                    <label for="email">Email</label>
+                </div>
+                <div class="floating-label fieldHolder noPadding">
+                    <input type="password" id="password" data-empty-error-message="Please enter your desired password" class="required strongPassword"/>
+                    <label for="password">Password</label>
+                </div>
+                <button type="button" class="validateThisForm">Click me to validate this form.</button>
+            </div>
+            <div id="form2" class="col-sm-6 form pull-left">
+                <h2>Form numbah 2</h2>
+                <div class="fieldHolder noFont noPadding">
+                    <label for="opt1">Select these options</label>
+                    <select id="opt1" data-empty-error-message="Please choose an option" class="half required">
+                        <option selected="selected" value="">Select an option</option>
+                        <option value="opt1">Option 1</option>
+                        <option value="opt1">Option 2</option>
+                        <option value="opt1">Option 3</option>
+                    </select>
+                    <select id="opt2" class="half">
+                        <option selected="selected" disabled value="">Select if you want...</option>
+                        <option value="opt1">Option 1</option>
+                        <option value="opt1">Option 2</option>
+                        <option value="opt1">Option 3</option>
+                    </select>
+                </div>
+                <div class="fieldHolder noPadding">
+                    <label for="addFile">Add a file</label>
+                    <div class="fakeFile">
+                        <input type="file" id="addFile" name="addFile" class="bigFile fakeInput required" onchange="previewFile('previewField', 'addFile')" />
+                        <img src="" id="previewField" class="previewImage"/>
+                    </div>
+                </div>
+                <div class="fieldHolder noPadding">
+                    <label for="checkGrp1">Choose multiple (at least one is required)!</label>
+                    <input type="checkbox" id="checkGrp1Opt1" name="checkGrp1" class="oneIsRequired" value="value1" />
+                    <label for="checkGrp1Opt1">Radio 1</label>
+                    <input type="checkbox" id="checkGrp1Opt2" name="checkGrp1" class="oneIsRequired" value="value2" />
+                    <label for="checkGrp1Opt2">Radio 2</label>
+                    <input type="checkbox" id="checkGrp1Opt3" name="checkGrp1" class="oneIsRequired required" data-empty-error-message="Please Select the 3rd option." value="value3" />
+                    <label for="checkGrp1Opt3">This one is always required</label>
+                </div>
+                <button type="button" class="validateThisForm">Click me to validate this form.</button>
+                <button type="button" id="validateForm1">You know what? I validate form numbah 1</button>
+            </div>
+            <div id="form3" class="col-sm-6 form pull-left">
+                <h2>Form numbah 3</h2>
+                <div class="fieldHolder noPadding">
+                    <label for="opt3">This is just another dropdown</label>
+                    <select id="opt3" data-empty-error-message="Please choose an option" class="required">
+                        <option selected="selected" value="">Select an option</option>
+                        <option value="opt1">Option 1</option>
+                        <option value="opt2">Option 2</option>
+                        <option value="opt3">Option 3</option>
+                    </select>
+                </div>
+                <div class="fieldHolder noPadding">
+                    <label for="radioGrp1">Choose One</label>
+                    <input type="radio" id="radioGrp1Opt1" name="radioGrp1" class="oneIsRequired" value="value1" />
+                    <label for="radioGrp1Opt1">Radio 1</label>
+                    <input type="radio" id="radioGrp1Opt2" name="radioGrp1" class="oneIsRequired" value="value2" />
+                    <label for="radioGrp1Opt2">Radio 2</label>
+                </div>
+                <div class="floating-label fieldHolder noPadding">
+                    <input type="password" id="password3" data-empty-error-message="Please enter your desired password" class="required strongPassword"/>
+                    <label for="password3">Password</label>
+                </div>
+                <button type="button" class="validateThisForm">Click me to validate this form.</button>
+            </div>
+        </section>
+
+        <script src="http://code.jquery.com/jquery-2.2.4.min.js"
+                integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+                crossorigin="anonymous"></script>
+        <script type="text/javascript" src="formValidator.js"></script>
+        <script type="text/javascript">
+            $(function(){
+                blurValidations($(".form"), { showErrorMessage: true, dumbValidations: true });
+
+                $("#validateForm1").click(function(){
+                    var valid = validateForm($("#form1"), { showErrorMessage: true, dumbValidations: true });
+
+                    if(valid)
+                        alert("Yey! This is a valid form!");
+                    else
+                        alert("Please try again");
+                });
+                $(".form > button.validateThisForm").click(function(){
+                    var valid = validateForm($(this).parents(".form"), { showErrorMessage: true, dumbValidations: true });
+
+                    if(valid)
+                        alert("Yey! This is a valid form!");
+                    else
+                        alert("Please try again");
+
+                });
+            });
+        </script>
+    </body>
+</html>
